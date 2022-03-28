@@ -1,25 +1,30 @@
-import logo from './logo.svg';
 import './App.css';
+import React from 'react';
+import Titre from './components/Titre';
+import Tableau from './components/Tableau';
 
-function App() {
-  return (
-    <div className="App">
+
+class App extends React.Component {
+  render(){
+    
+    const livres = [
+        {id:1, titre:'Fondation'},
+        {id:2, titre:'Les montagnes hallucinées'},
+        {id:3, titre:'Blade Runner'}
+    ];
+
+    return (
+      <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+          <h1>MyBooks</h1>
+		
+          <Titre texteTitre="Liste des livres" />
+          <Tableau livres={livres}/>
+          
       </header>
     </div>
-  );
+    );
+  }
 }
 
-export default App;
+export default (App);
