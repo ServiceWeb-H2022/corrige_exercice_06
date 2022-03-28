@@ -1,70 +1,87 @@
-# Getting Started with Create React App
+# Exercice 06 - Composants et props
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Installation
 
-## Available Scripts
+- Créer un nouveau projet React nommé mybooks (en minuscule).
+- Remplacez le code du fichier `App.js` par celui-ci
 
-In the project directory, you can run:
+``````react
+import logo from './logo.svg';
+import './App.css';
+import React from 'react';
 
-### `npm start`
+class App extends React.Component {
+  render(){
+      
+    return (
+      <div className="App">
+      <header className="App-header">
+          <h1>MyBooks</h1>
+		
+          <h3>Liste des livres</h3>
+		
+          <table className="BooksTable">
+            <thead>
+              <tr>
+                <th>id</th>
+                <th>Titre</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Fondation</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Les montagnes hallucinÃ©es</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Blade Runner</td>
+              </tr>
+            </tbody>
+          </table>
+      </header>
+    </div>
+    );
+  }
+}
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+export default (App);
+``````
+- Au début de la fonction render() de la classe App, ajoutez le tableau suivant d'objets "livre".
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+``````react
+const books = [
+    {id:1, titre:'Fondation'},
+    {id:2, titre:'Les montagnes hallucinées'},
+	{id:3, titre:'Blade Runner'}
+];
+``````
 
-### `npm test`
+- Ajoutez les lignes suivante à la fin du fichier `App.css`  
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+``````css
+.BooksTable th, .BooksTable td {
+  text-align: left;
+  padding-right: 15px;
+}
+``````
 
-### `npm run build`
+Maintenant lancer l'application avec la commande `npm start`.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## À faire ensuite
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Créez les composantes suivantes en dans des fichiers séparés situés dans le répertoire `src/components`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Une composante `Titre` qui va remplacer la balise `<h3>` dans le fichier `App.js`. Elle recevra un paramètre `texte` qui sera le texte à afficher. La composante retournera une balise `<h3>` avec la valeur du paramètre reçu.
 
-### `npm run eject`
+- Une composante nommée  `Tableau`. Cette composante va remplacer la balise `<table>` dans le fichier `App.js`. Elle recevra un paramètre `livres` qui est le tableau de livres qu’on a défini plus haut. Elle va retourner le code html pour afficher le tableau.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- Une composante `LigneTableau`. Cette composante va être utilisé dans la composante `Tableau` pour afficher une ligne du tableau. Elle recevra un paramètre `livre` qui représente un objet du tableau livres. Elle va retourner le code html pour afficher un ligne du tableau (une balise `<tr>` et son contenu) avec les valeurs reçues en paramètres.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Modifiez le fichier `App.js` pour utiliser les composantes créés.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+https://serviceweb-h2022.github.io/exercices/06_react_component/
